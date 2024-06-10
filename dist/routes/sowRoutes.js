@@ -26,7 +26,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const sowController = __importStar(require("../controller/sowController"));
 const router = (0, express_1.Router)();
-router.post('/', sowController.createSow);
-router.get('/', sowController.getSows);
-// Other routes...
+router.post("/", sowController.createSow);
+router.get("/", sowController.getSows);
 exports.default = router;

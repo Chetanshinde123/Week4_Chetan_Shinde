@@ -22,4 +22,3 @@ const getInvoices = () => __awaiter(void 0, void 0, void 0, function* () {
     return yield invoice_1.default.findAll();
 });
 exports.getInvoices = getInvoices;
-// Other CRUD operations...

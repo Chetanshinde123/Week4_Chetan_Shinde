@@ -1,11 +1,10 @@
 import Organization from "./organization";
 import Customer from "./customer";
 import Invoice from "./invoice";
-import Payment from "./payment";
 import Sow from "./sow";
 import SOWPaymentPlan from "./sowPaymentPlan";
 
-// Define associations here
+// ------------- Customer associations ----------------
 Organization.hasMany(Customer, { foreignKey: "organizationId" });
 Customer.belongsTo(Organization, { foreignKey: "organizationId" });
 
@@ -26,5 +25,5 @@ Sow.hasMany(SOWPaymentPlan, { foreignKey: "sowId" });
 SOWPaymentPlan.belongsTo(Customer, { foreignKey: "customerId" });
 SOWPaymentPlan.belongsTo(Sow, { foreignKey: "sowId" });
 
-// Export models
-export { Organization, Customer, Invoice, Payment, Sow, SOWPaymentPlan };
+
+export { Organization, Customer, Invoice, Sow, SOWPaymentPlan };

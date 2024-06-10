@@ -8,7 +8,6 @@ router.post("/", async (req: Request, res: Response) => {
   try {
     await organizationController.createOrganization(req, res);
   } catch (error: any) {
-    // Handle the error appropriately
     res.status(500).json({ error: error.message });
   }
 });
@@ -17,7 +16,6 @@ router.get("/", async (req: Request, res: Response) => {
   try {
     await organizationController.getOrganizations(req, res);
   } catch (error: any) {
-    // Handle the error appropriately
     res.status(500).json({ error: error.message });
   }
 });

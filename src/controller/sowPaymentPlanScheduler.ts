@@ -1,9 +1,7 @@
-// sowPaymentPlanScheduler.ts
-
 import { createSOWPaymentPlans } from '../services/sowPaymentPlanService';
 import cron from 'node-cron';
 
-// Schedule the data generation function to run daily at midnight (00:00)
+
 cron.schedule('0 0 * * *', async () => {
   try {
     await createSOWPaymentPlans();

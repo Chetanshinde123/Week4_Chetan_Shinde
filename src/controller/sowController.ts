@@ -19,4 +19,4 @@ export const getSows = async (req: Request, res: Response) => {
   }
 };
 
-// Other CRUD operations...
+

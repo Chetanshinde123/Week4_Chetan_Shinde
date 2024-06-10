@@ -40,7 +40,6 @@ router.post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         yield organizationController.createOrganization(req, res);
     }
     catch (error) {
-        // Handle the error appropriately
         res.status(500).json({ error: error.message });
     }
 }));
@@ -49,7 +48,6 @@ router.get("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         yield organizationController.getOrganizations(req, res);
     }
     catch (error) {
-        // Handle the error appropriately
         res.status(500).json({ error: error.message });
     }
 }));

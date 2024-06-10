@@ -22,4 +22,3 @@ const getCustomers = () => __awaiter(void 0, void 0, void 0, function* () {
     return yield customer_1.default.findAll();
 });
 exports.getCustomers = getCustomers;
-// Other CRUD operations...

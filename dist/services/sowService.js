@@ -18,7 +18,7 @@ const createSow = (sowData) => __awaiter(void 0, void 0, void 0, function* () {
     const { invoiceEmailAddresses, customerId, customerPONumber, title, customerSONumber, validityPeriod, totalValue, currency } = sowData;
     // Process the invoiceEmailAddresses to ensure it is saved as a string
     const processedInvoiceEmailAddresses = Array.isArray(invoiceEmailAddresses)
-        ? invoiceEmailAddresses.join(',')
+        ? invoiceEmailAddresses.join(",")
         : invoiceEmailAddresses;
     // Create the new SOW
     const newSow = yield sow_1.default.create({

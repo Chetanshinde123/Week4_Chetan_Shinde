@@ -26,28 +26,47 @@ class Invoice extends sequelize_1.Model {
 }
 Invoice.init({
     id: {
+        type: sequelize_1.DataTypes.UUID,
+        primaryKey: true
+    },
+    totalInvoiceValue: {
         type: sequelize_1.DataTypes.STRING,
-        primaryKey: true,
+        allowNull: false
     },
-    organizationId: {
+    sowId: {
+        type: sequelize_1.DataTypes.UUID,
+        allowNull: false,
+        references: {
+            model: "Sow",
+            key: "id"
+        }
+    },
+    status: {
         type: sequelize_1.DataTypes.STRING,
-        allowNull: false,
+        allowNull: false
     },
-    invoiceDate: {
-        type: sequelize_1.DataTypes.DATE,
-        allowNull: false,
-    },
-    invoiceDueDate: {
-        type: sequelize_1.DataTypes.DATE,
-        allowNull: false,
-    },
-    invoiceAmount: {
+    invoiceSentOn: {
         type: sequelize_1.DataTypes.FLOAT,
-        allowNull: false,
+        allowNull: false
     },
-    // Other fields...
+    customerId: {
+        type: sequelize_1.DataTypes.UUID,
+        allowNull: false,
+        references: {
+            model: "Customer",
+            key: "id"
+        }
+    },
+    paymentReceivedOn: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false
+    },
+    invoiceVersionNumber: {
+        type: sequelize_1.DataTypes.STRING,
+        allowNull: false
+    }
 }, {
     sequelize: pgConfig_1.default,
-    modelName: 'Invoice',
+    modelName: "Invoice"
 });
 exports.default = Invoice;

@@ -59,15 +59,7 @@ export interface CreateInvoiceDTO {
   notes: string;
 }
 
-export interface UpdateInvoiceDTO {
-  organizationId?: string;
-  invoiceDate?: Date;
-  invoiceDueDate?: Date;
-  invoiceAmount?: number;
-  currency?: string;
-  status?: string;
-  notes?: string;
-}
+
 
 export interface CreatePaymentDTO {
   id: string;
@@ -100,6 +92,14 @@ export interface CreateSowDTO {
   currency: string;
 }
 
+
+export interface SOWPaymentPlanAttributes {
+  id: string;
+  sowId: string;
+  customerId: string;
+  plannedInvoiceDate: Date;
+  totalActualAmount: number;
+}
 
 export interface UpdateSowDTO {
   organizationId?: string;

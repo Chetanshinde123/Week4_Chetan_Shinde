@@ -19,4 +19,4 @@ export const getCustomers = async (req: Request, res: Response) => {
   }
 };
 
-// Other CRUD operations...
+

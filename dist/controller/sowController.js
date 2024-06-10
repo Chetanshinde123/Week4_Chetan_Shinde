@@ -54,4 +54,3 @@ const getSows = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.getSows = getSows;
-// Other CRUD operations...

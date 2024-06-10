@@ -34,23 +34,3 @@ app.listen(PORT, () => {
 });
 
 export default app;
-
-
-// import express from 'express';
-// import organizationRoutes from './routes/organizationRoutes';
-
-
-// const app = express();
-// const PORT = process.env.PORT || 8000;
-
-// app.use(express.json());
-
-// app.use('/organizations', organizationRoutes);
-
-
-
-// app.listen(PORT, () => {
-//   console.log(`Server is running on port ${PORT}`);
-// });
-
-// export default app;

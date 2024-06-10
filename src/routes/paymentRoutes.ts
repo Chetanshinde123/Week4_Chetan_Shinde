@@ -1,11 +1,11 @@
-import { Router } from 'express';
-import * as paymentController from '../controller/paymentController';
+// import { Router } from 'express';
+// import * as paymentController from '../controller/paymentController';
 
-const router = Router();
+// const router = Router();
 
-router.post('/', paymentController.createPayment);
-router.get('/', paymentController.getPayments);
+// router.post('/', paymentController.createPayment);
+// router.get('/', paymentController.getPayments);
 
-// Other routes...
+// // Other routes...
 
-export default router;
+// export default router;

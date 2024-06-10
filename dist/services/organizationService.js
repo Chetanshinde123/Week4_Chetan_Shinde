@@ -14,7 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getOrganizations = exports.createOrganization = void 0;
 const organization_1 = __importDefault(require("../models/organization"));
-// Other CRUD operations...
 const createOrganization = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const newOrganization = yield organization_1.default.create(data);
@@ -37,4 +36,3 @@ const getOrganizations = () => __awaiter(void 0, void 0, void 0, function* () {
     }
 });
 exports.getOrganizations = getOrganizations;
-// Add other service methods as needed

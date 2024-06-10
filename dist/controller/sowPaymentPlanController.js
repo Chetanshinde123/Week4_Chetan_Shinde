@@ -1,6 +1,4 @@
 "use strict";
-// import { Request, Response } from 'express';
-// import * as SOWPaymentPlan from "../services/SOWPaymentPlan"
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
@@ -46,11 +44,3 @@ const createSOWPaymentPlan = (req, res) => __awaiter(void 0, void 0, void 0, fun
     }
 });
 exports.createSOWPaymentPlan = createSOWPaymentPlan;
-// export const getSOWPaymentPlans = async (req: Request, res: Response) => {
-//   try {
-//     const paymentPlans = await sowPaymentPlanService.getSOWPaymentPlans();
-//     res.status(200).json(paymentPlans);
-//   } catch (error: any) {
-//     res.status(500).json({ message: error.message });
-//   }
-// };

@@ -15,44 +15,68 @@
 //     };
 //     return Invoice;
 //   };
-  
-import { DataTypes, Model } from 'sequelize';
+
+import { DataTypes, Model } from "sequelize";
 import sequelize from "../postgresDB/pgConfig";
 
 class Invoice extends Model {
   public id!: string;
-  public organizationId!: string;
-  public invoiceDate!: Date;
-  public invoiceDueDate!: Date;
-  public invoiceAmount!: number;
-  // Other fields...
+  public totalInvoiceValue!: string;
+  public sowId!: string;
+  public status!: string;
+  public invoiceSentOn!: string;
+  public customerId!: string;
+  public paymentReceivedOn!: string;
+  public invoiceVersionNumber!: string;
 }
 
-Invoice.init({
-  id: {
-    type: DataTypes.STRING,
-    primaryKey: true,
+Invoice.init(
+  {
+    id: {
+      type: DataTypes.UUID,
+      primaryKey: true
+    },
+    totalInvoiceValue: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    sowId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: "Sow",
+        key: "id"
+      }
+    },
+    status: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    invoiceSentOn: {
+      type: DataTypes.FLOAT,
+      allowNull: false
+    },
+    customerId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: "Customer",
+        key: "id"
+      }
+    },
+    paymentReceivedOn: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    invoiceVersionNumber: {
+      type: DataTypes.STRING,
+      allowNull: false
+    }
   },
-  organizationId: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  invoiceDate: {
-    type: DataTypes.DATE,
-    allowNull: false,
-  },
-  invoiceDueDate: {
-    type: DataTypes.DATE,
-    allowNull: false,
-  },
-  invoiceAmount: {
-    type: DataTypes.FLOAT,
-    allowNull: false,
-  },
-  // Other fields...
-}, {
-  sequelize,
-  modelName: 'Invoice',
-});
+  {
+    sequelize,
+    modelName: "Invoice"
+  }
+);
 
 export default Invoice;
