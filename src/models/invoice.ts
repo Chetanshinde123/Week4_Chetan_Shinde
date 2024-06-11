@@ -1,21 +1,3 @@
-// module.exports = (sequelize : any, DataTypes : any) => {
-//     const Invoice = sequelize.define('Invoice', {
-//       id: { type: DataTypes.STRING, primaryKey: true },
-//       totalInvoiceValue: DataTypes.FLOAT,
-//       sowId: DataTypes.STRING,
-//       status: DataTypes.ENUM('Drafted', 'Cancelled', 'Approved'),
-//       invoiceSentOn: DataTypes.DATE,
-//       customerId: DataTypes.STRING,
-//       paymentReceivedOn: DataTypes.DATE,
-//       invoiceVersionNumber: DataTypes.INTEGER
-//     }, {});
-//     Invoice.associate = function(models : any) {
-//       Invoice.belongsTo(models.SOW, { foreignKey: 'sowId' });
-//       Invoice.belongsTo(models.Customer, { foreignKey: 'customerId' });
-//     };
-//     return Invoice;
-//   };
-
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../postgresDB/pgConfig";
 
