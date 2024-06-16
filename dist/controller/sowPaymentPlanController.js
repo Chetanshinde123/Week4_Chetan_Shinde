@@ -32,11 +32,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createSOWPaymentPlan = void 0;
+exports.getSOWPaymentPlan = exports.createSOWPaymentPlan = void 0;
 const sowPaymentPlanService = __importStar(require("../services/sowPaymentPlanService"));
 const createSOWPaymentPlan = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const paymentPlan = yield sowPaymentPlanService.createSOWPaymentPlans();
+        const paymentPlan = yield sowPaymentPlanService.createSOWPaymentPlans(req.body);
         res.status(201).json(paymentPlan);
     }
     catch (error) {
@@ -44,3 +44,13 @@ const createSOWPaymentPlan = (req, res) => __awaiter(void 0, void 0, void 0, fun
     }
 });
 exports.createSOWPaymentPlan = createSOWPaymentPlan;
+const getSOWPaymentPlan = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const paymentPlan = yield sowPaymentPlanService.getSOWPaymentPlans();
+        res.status(201).json(paymentPlan);
+    }
+    catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+exports.getSOWPaymentPlan = getSOWPaymentPlan;

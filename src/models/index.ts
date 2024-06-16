@@ -26,4 +26,8 @@ SOWPaymentPlan.belongsTo(Customer, { foreignKey: "customerId" });
 SOWPaymentPlan.belongsTo(Sow, { foreignKey: "sowId" });
 
 
+
+SOWPaymentPlan.belongsTo(Customer, { foreignKey: 'customerId' });
+Customer.hasMany(SOWPaymentPlan, { foreignKey: 'customerId' });
+
 export { Organization, Customer, Invoice, Sow, SOWPaymentPlan };

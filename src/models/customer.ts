@@ -85,7 +85,7 @@ Customer.init(
   },
   {
     sequelize,
-    
+    timestamps : false,
     tableName : "Customer"
   }
 );

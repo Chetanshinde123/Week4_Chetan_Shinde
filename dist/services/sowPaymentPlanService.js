@@ -11,37 +11,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getSOWPaymentPlans = exports.createSOWPaymentPlans = void 0;
 const models_1 = require("../models");
-const getMonthsDifference = (startDate, endDate) => {
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-    return (end.getMonth() -
-        start.getMonth() +
-        1 +
-        12 * (end.getFullYear() - start.getFullYear()));
-};
-const createSOWPaymentPlans = () => __awaiter(void 0, void 0, void 0, function* () {
+const createSOWPaymentPlans = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const Sow = []; // Fetch SOW data from the database
-        for (const sow of Sow) {
-            const totalMonths = getMonthsDifference(sow.validFrom, sow.validUpto);
-            const monthlyPayment = sow.totalValue / totalMonths;
-            const paymentPlans = [];
-            let paymentDate = new Date(sow.validFrom);
-            for (let i = 0; i < totalMonths; i++) {
-                paymentPlans.push({
-                    id: `${sow.id}-${i + 1}`,
-                    sowId: sow.id,
-                    customerId: sow.customerId,
-                    plannedInvoiceDate: new Date(paymentDate.setMonth(paymentDate.getMonth() + 1)),
-                    totalActualAmount: monthlyPayment
-                });
-            }
-            yield models_1.SOWPaymentPlan.bulkCreate(paymentPlans);
-        }
+        const newOrganization = yield models_1.SOWPaymentPlan.create(data);
+        console.log("Data added");
+        return newOrganization;
     }
     catch (error) {
-        console.error("Error generating SOW payment plans:", error);
-        throw error;
+        console.log("Data not added");
+        throw new Error(error.message);
     }
 });
 exports.createSOWPaymentPlans = createSOWPaymentPlans;

@@ -1,22 +1,3 @@
-// module.exports = (sequelize : any, DataTypes : any) => {
-//     const SOW = sequelize.define('SOW', {
-//       id: { type: DataTypes.STRING, primaryKey: true },
-//       invoiceEmailAddresses: DataTypes.ARRAY(DataTypes.STRING),
-//       customerId: DataTypes.STRING,
-//       customerPONumber: DataTypes.STRING,
-//       title: DataTypes.STRING,
-//       customerSONumber: DataTypes.STRING,
-//       validityPeriod: DataTypes.JSON,
-//       totalValue: DataTypes.FLOAT,
-//       currency: DataTypes.STRING
-//     }, {});
-//     SOW.associate = function(models : any) {
-//       SOW.belongsTo(models.Customer, { foreignKey: 'customerId' });
-//     };
-//     return SOW;
-//   };
-
-// models/sow.ts
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../postgresDB/pgConfig";
 
@@ -83,7 +64,8 @@ Sow.init(
   },
   {
     sequelize,
-    tableName: "Sow"
+    tableName: "Sow",
+    timestamps : false
   }
 );
 

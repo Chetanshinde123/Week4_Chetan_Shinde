@@ -3,7 +3,7 @@ import * as sowPaymentPlanController from '../controller/sowPaymentPlanControlle
 
 const router = Router();
 
-router.get('/', sowPaymentPlanController.createSOWPaymentPlan);
-// router.get('/', sowPaymentPlanController.getSOWPaymentPlans);
+router.post('/', sowPaymentPlanController.createSOWPaymentPlan);
+router.get('/', sowPaymentPlanController.getSOWPaymentPlan);
 
 export default router;

@@ -3,8 +3,8 @@ import { Sequelize } from "sequelize";
 const sequelize = new Sequelize({
   username: "postgres",
   host: "localhost",
-  database: "Centra",
-  password: "your pass",
+  database: "CentraLogic",
+  password: "Shinde@225",
   port: 5432,
   dialect: "postgres"
 });
@@ -19,7 +19,7 @@ sequelize
   });
 
 sequelize
-  .sync({ force: true })
+  .sync()
   .then(() => {
     console.log("Database synchronized");
   })

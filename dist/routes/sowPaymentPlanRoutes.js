@@ -26,6 +26,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const sowPaymentPlanController = __importStar(require("../controller/sowPaymentPlanController"));
 const router = (0, express_1.Router)();
-router.get('/', sowPaymentPlanController.createSOWPaymentPlan);
-// router.get('/', sowPaymentPlanController.getSOWPaymentPlans);
+router.post('/', sowPaymentPlanController.createSOWPaymentPlan);
+router.get('/', sowPaymentPlanController.getSOWPaymentPlan);
 exports.default = router;

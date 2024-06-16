@@ -5,57 +5,53 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const pgConfig_1 = __importDefault(require("../postgresDB/pgConfig"));
-class Sow extends sequelize_1.Model {
+class PayementPlanLineItems extends sequelize_1.Model {
 }
-Sow.init({
+PayementPlanLineItems.init({
     id: {
         type: sequelize_1.DataTypes.UUID,
         defaultValue: sequelize_1.DataTypes.UUIDV4,
         primaryKey: true
     },
-    invoiceEmailAddresses: {
-        type: sequelize_1.DataTypes.STRING,
-        allowNull: false
-    },
-    customerId: {
+    sowId: {
         type: sequelize_1.DataTypes.UUID,
         allowNull: false,
         references: {
-            model: "Customer",
+            model: "Sow",
             key: "id"
         }
     },
-    customerPONumber: {
+    SOWPaymentPlanId: {
+        type: sequelize_1.DataTypes.UUID,
+        allowNull: false,
+        references: {
+            model: "SOWPaymentPlan",
+            key: "id"
+        }
+    },
+    OrderId: {
+        type: sequelize_1.DataTypes.UUID,
+        defaultValue: sequelize_1.DataTypes.UUIDV4,
+        primaryKey: true
+    },
+    Particular: {
         type: sequelize_1.DataTypes.STRING,
         allowNull: false
     },
-    title: {
-        type: sequelize_1.DataTypes.STRING,
+    Rate: {
+        type: sequelize_1.DataTypes.INTEGER,
         allowNull: false
     },
-    customerSONumber: {
-        type: sequelize_1.DataTypes.STRING,
+    Unit: {
+        type: sequelize_1.DataTypes.INTEGER,
         allowNull: false
     },
-    validFrom: {
-        type: sequelize_1.DataTypes.DATE,
-        allowNull: false
-    },
-    validUpto: {
-        type: sequelize_1.DataTypes.DATE,
-        allowNull: false
-    },
-    totalValue: {
-        type: sequelize_1.DataTypes.FLOAT,
-        allowNull: false
-    },
-    currency: {
-        type: sequelize_1.DataTypes.STRING,
+    Total: {
+        type: sequelize_1.DataTypes.INTEGER,
         allowNull: false
     }
 }, {
     sequelize: pgConfig_1.default,
-    tableName: "Sow",
-    timestamps: false
+    tableName: "PayementPlanLineItems"
 });
-exports.default = Sow;
+exports.default = PayementPlanLineItems;

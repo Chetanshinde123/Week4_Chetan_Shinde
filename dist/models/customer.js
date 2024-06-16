@@ -71,6 +71,7 @@ Customer.init({
     }
 }, {
     sequelize: pgConfig_1.default,
+    timestamps: false,
     tableName: "Customer"
 });
 exports.default = Customer;

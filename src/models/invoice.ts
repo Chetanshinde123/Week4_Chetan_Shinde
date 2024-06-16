@@ -1,64 +1,60 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from "../postgresDB/pgConfig";
+import Customer from "./customer";
 
 class Invoice extends Model {
   public id!: string;
-  public totalInvoiceValue!: string;
+  public totalInvoiceValue!: number;
   public sowId!: string;
   public status!: string;
-  public invoiceSentOn!: string;
+  public invoiceSentOn!: Date;
   public customerId!: string;
-  public paymentReceivedOn!: string;
-  public invoiceVersionNumber!: string;
 }
 
 Invoice.init(
   {
     id: {
       type: DataTypes.UUID,
-      primaryKey: true
+      defaultValue: DataTypes.UUIDV4,
+      primaryKey: true,
     },
     totalInvoiceValue: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.FLOAT,
+      allowNull: false,
     },
     sowId: {
       type: DataTypes.UUID,
       allowNull: false,
       references: {
         model: "Sow",
-        key: "id"
-      }
+        key: "id",
+      },
     },
     status: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
     invoiceSentOn: {
-      type: DataTypes.FLOAT,
-      allowNull: false
+      type: DataTypes.DATE,
+      allowNull: false,
     },
     customerId: {
       type: DataTypes.UUID,
       allowNull: false,
       references: {
         model: "Customer",
-        key: "id"
-      }
+        key: "id",
+      },
     },
-    paymentReceivedOn: {
-      type: DataTypes.STRING,
-      allowNull: false
-    },
-    invoiceVersionNumber: {
-      type: DataTypes.STRING,
-      allowNull: false
-    }
   },
   {
     sequelize,
-    modelName: "Invoice"
+    modelName: "Invoice",
+    timestamps : false
   }
 );
+
+Customer.hasMany(Invoice, { foreignKey: "customerId" });
+Invoice.belongsTo(Customer, { foreignKey: "customerId" });
 
 export default Invoice;

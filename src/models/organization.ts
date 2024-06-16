@@ -60,7 +60,7 @@ Organization.init(
   },
   {
     sequelize,
-
+    timestamps : false,
     tableName: "Organization"
   }
 );

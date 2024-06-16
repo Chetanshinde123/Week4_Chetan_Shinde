@@ -51,6 +51,7 @@ Organization.init({
     }
 }, {
     sequelize: pgConfig_1.default,
+    timestamps: false,
     tableName: "Organization"
 });
 exports.default = Organization;

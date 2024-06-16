@@ -1,7 +1,7 @@
 import express, { Request, Response } from "express";
 import organizationRoutes from "./routes/organizationRoutes";
 import customerRoutes from "./routes/customerRoutes";
-// import invoiceRoutes from "./routes/invoiceRoutes";
+import invoiceRoutes from "./routes/invoiceRoutes";
 // import paymentRoutes from "./routes/paymentRoutes";
 import sowRoutes from "./routes/sowRoutes";
 import sowPaymentPlanRoutes from "./routes/sowPaymentPlanRoutes"
@@ -16,7 +16,7 @@ const PORT = 8000;
 
 app.use("/organization", organizationRoutes);
 app.use("/customer", customerRoutes);
-// app.use("/invoices", invoiceRoutes);
+app.use("/invoices", invoiceRoutes);
 // app.use("/payments", paymentRoutes);
 app.use("/sows", sowRoutes);
 app.use("/sow-payment-plans", sowPaymentPlanRoutes);

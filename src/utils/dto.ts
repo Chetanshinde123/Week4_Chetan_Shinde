@@ -49,15 +49,13 @@ export interface UpdateCustomerDTO {
 }
 
 export interface CreateInvoiceDTO {
-  id: string;
-  organizationId: string;
-  invoiceDate: Date;
-  invoiceDueDate: Date;
-  invoiceAmount: number;
-  currency: string;
-  status: string;
-  notes: string;
+  customerId: string;
+  invoiceDate: string;
+  totalAmount: number;
+  sowId: string;
+  status?: string;
 }
+
 
 
 

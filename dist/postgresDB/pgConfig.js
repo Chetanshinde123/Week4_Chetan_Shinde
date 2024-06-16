@@ -4,8 +4,8 @@ const sequelize_1 = require("sequelize");
 const sequelize = new sequelize_1.Sequelize({
     username: "postgres",
     host: "localhost",
-    database: "Centra",
-    password: "your pass",
+    database: "CentraLogic",
+    password: "Shinde@225",
     port: 5432,
     dialect: "postgres"
 });
@@ -18,7 +18,7 @@ sequelize
     console.log("Error connecting data", err);
 });
 sequelize
-    .sync({ force: true })
+    .sync()
     .then(() => {
     console.log("Database synchronized");
 })

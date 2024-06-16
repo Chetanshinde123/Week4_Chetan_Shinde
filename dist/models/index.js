@@ -30,3 +30,5 @@ customer_1.default.hasMany(sowPaymentPlan_1.default, { foreignKey: "customerId" 
 sow_1.default.hasMany(sowPaymentPlan_1.default, { foreignKey: "sowId" });
 sowPaymentPlan_1.default.belongsTo(customer_1.default, { foreignKey: "customerId" });
 sowPaymentPlan_1.default.belongsTo(sow_1.default, { foreignKey: "sowId" });
+sowPaymentPlan_1.default.belongsTo(customer_1.default, { foreignKey: 'customerId' });
+customer_1.default.hasMany(sowPaymentPlan_1.default, { foreignKey: 'customerId' });
