@@ -25,6 +25,8 @@ export interface UpdateOrganizationDTO {
   phone?: string;
 }
 
+
+//  -------------- Customer -----------------------
 export interface CreateCustomerDTO {
   id: string;
   organizationId: string;

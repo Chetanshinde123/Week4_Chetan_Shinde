@@ -32,19 +32,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createPayment = void 0;
-const paymentService = __importStar(require("../services/paymentService"));
-const createPayment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+const express_1 = require("express");
+const sowPaymentPlanItems = __importStar(require("../controller/sowPaymentPlanItems"));
+const router = (0, express_1.Router)();
+router.post("/", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const updatedPaymentInvoice = yield paymentService.paymentStatusUPdate(req, res);
-        res.status(200).json(updatedPaymentInvoice);
+        const invoice = yield sowPaymentPlanItems.genInvoice(req, res);
+        console.log('Sow Payment genrated succesfully');
+        res.send(invoice);
     }
-    catch (error) {
-        res.status(500).json({ message: error.message });
+    catch (err) {
+        console.error('Error in Payment genration', err);
+        res.status(500).send('Error in Payment genration');
     }
-});
-exports.createPayment = createPayment;
-// export const paymentStatusUpdate = async (req: Request, res: Response)=>{
-//     const invoice: any = await paymentStatusUPdate(req, res)
-//     return invoice
-// }
+}));
+exports.default = router;

@@ -1,80 +1,83 @@
 import { Sequelize, DataTypes, Model } from "sequelize";
 import sequelize from "../postgresDB/pgConfig";
 
-interface PaymentPlanAttributes {
-  id: string;
-  SOWPaymentPlanId: string;
-  sowId: string;
-  OrderId: string;
-  Particular: string;
-  Rate: number;
-  Unit: number;
-  Total: number;
-}
 
-class PayementPlanLineItems
-  extends Model<PaymentPlanAttributes>
-  implements PaymentPlanAttributes
+// interface SowPaymentPlanLineItemAttributes {
+//   id: string;
+//   SOWPaymentPlanId: string;
+//   sowId: string;
+//   OrderId: string;
+//   Particular: string;
+//   Rate: number;
+//   Unit: number;
+//   Total: number;
+// }
+
+class SowPaymentPlanLineItem
+  extends Model
 {
   public id!: string;
-  public SOWPaymentPlanId!: string;
+  public sowPaymentPlanId!: string;
   public sowId!: string;
-  public OrderId!: string;
-  public Particular!: string;
-  public Rate!: number;
-  public Unit!: number;
-  public Total!: number;
+  public orderId!: string;
+  public particular!: string;
+  public rate!: number;
+  public unit!: number;
+  public total!: number;
 }
 
-PayementPlanLineItems.init(
+SowPaymentPlanLineItem.init(
   {
     id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      primaryKey: true
+      primaryKey: true,
+    },
+    sowPaymentPlanId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+      references: {
+        model: "SOWPaymentPlan",
+        key: "id",
+      },
     },
     sowId: {
       type: DataTypes.UUID,
       allowNull: false,
       references: {
         model: "Sow",
-        key: "id"
-      }
+        key: "id",
+      },
     },
-    SOWPaymentPlanId: {
-      type: DataTypes.UUID,
-      allowNull: false,
-      references: {
-        model: "SOWPaymentPlan",
-        key: "id"
-      }
-    },
-    OrderId: {
+    orderId: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
-      primaryKey: true
+      allowNull: false,
     },
-    Particular: {
+    particular: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
     },
-    Rate: {
+    rate: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
     },
-    Unit: {
+    unit: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
     },
-    Total: {
+    total: {
       type: DataTypes.INTEGER,
-      allowNull: false
-    }
+      allowNull: false,
+    },
   },
   {
     sequelize,
-    tableName: "PayementPlanLineItems"
+    tableName: "sowPaymentPlanLineItems",
+    timestamps : false
   }
 );
 
-export default PayementPlanLineItems;
+
+
+export default SowPaymentPlanLineItem;

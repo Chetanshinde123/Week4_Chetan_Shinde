@@ -8,26 +8,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getInvoicesHandler = exports.createInvoiceHandler = void 0;
-const invoiceService_1 = require("../services/invoiceService");
-const createInvoiceHandler = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.createSOWPaymentPlanItems = void 0;
+const sowPaymentPlanLineItems_1 = __importDefault(require("../models/sowPaymentPlanLineItems"));
+const createSOWPaymentPlanItems = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const invoice = yield (0, invoiceService_1.createInvoice)(req, res);
-        res.status(201).json(invoice);
+        const newOrganization = yield sowPaymentPlanLineItems_1.default.create(req.body);
+        console.log("Data added");
+        return newOrganization;
     }
     catch (error) {
-        res.status(500).json({ message: error.message });
+        console.log("Data not added");
+        throw new Error(error.message);
     }
 });
-exports.createInvoiceHandler = createInvoiceHandler;
-const getInvoicesHandler = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        const invoices = yield (0, invoiceService_1.getInvoices)();
-        res.status(200).json(invoices);
-    }
-    catch (error) {
-        res.status(500).json({ message: error.message });
-    }
-});
-exports.getInvoicesHandler = getInvoicesHandler;
+exports.createSOWPaymentPlanItems = createSOWPaymentPlanItems;

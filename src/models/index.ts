@@ -3,6 +3,7 @@ import Customer from "./customer";
 import Invoice from "./invoice";
 import Sow from "./sow";
 import SOWPaymentPlan from "./sowPaymentPlan";
+import SowPaymentPlanLineItem from "./sowPaymentPlanLineItems";
 
 // ------------- Customer associations ----------------
 Organization.hasMany(Customer, { foreignKey: "organizationId" });
@@ -30,4 +31,11 @@ SOWPaymentPlan.belongsTo(Sow, { foreignKey: "sowId" });
 SOWPaymentPlan.belongsTo(Customer, { foreignKey: 'customerId' });
 Customer.hasMany(SOWPaymentPlan, { foreignKey: 'customerId' });
 
-export { Organization, Customer, Invoice, Sow, SOWPaymentPlan };
+
+// SowPaymentPlanLineItem.belongsTo(Sow, { foreignKey: 'sowId' });
+// Sow.hasMany(SowPaymentPlanLineItem, { foreignKey: 'sowId' });
+
+// SowPaymentPlanLineItem.belongsTo(SOWPaymentPlan, { foreignKey: 'sowPaymentPlanId' });
+// SOWPaymentPlan.hasMany(SowPaymentPlanLineItem, { foreignKey: 'sowPaymentPlanId' });
+
+export { Organization, Customer, Invoice, Sow, SOWPaymentPlan, SowPaymentPlanLineItem };

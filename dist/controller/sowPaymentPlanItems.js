@@ -32,19 +32,15 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createPayment = void 0;
-const paymentService = __importStar(require("../services/paymentService"));
-const createPayment = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+exports.genInvoice = void 0;
+const sowPaymentPlanItems = __importStar(require("../services/sowPaymentPlanItems"));
+const genInvoice = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const updatedPaymentInvoice = yield paymentService.paymentStatusUPdate(req, res);
-        res.status(200).json(updatedPaymentInvoice);
+        const sow = yield sowPaymentPlanItems.createSOWPaymentPlanItems(req, res);
+        res.status(201).json(sow);
     }
     catch (error) {
         res.status(500).json({ message: error.message });
     }
 });
-exports.createPayment = createPayment;
-// export const paymentStatusUpdate = async (req: Request, res: Response)=>{
-//     const invoice: any = await paymentStatusUPdate(req, res)
-//     return invoice
-// }
+exports.genInvoice = genInvoice;
